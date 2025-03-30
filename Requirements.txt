@@ -1,0 +1,8 @@
+opencv-python
+SpoutGL
+PyOpenGL
+numpy
+pyperclip
+websockets
+glfw
+imgui[glfw]
