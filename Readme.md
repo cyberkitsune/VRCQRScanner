@@ -11,7 +11,7 @@ Additionally, the following is also supported:
 - Send the QR code as an XSOverlay notification
 
 ## Usage
-I will set up a binary release in the future, for now, run from source as described below
+[Download Prerelease](https://github.com/cyberkitsune/VRCQRScanner/releases/tag/pr-1) -- **Very early build!**
 
 ## Running from Source
 ### Requirements
