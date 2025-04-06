@@ -42,6 +42,7 @@ class VRCSpoutBackend(VRCQRBackend):
 
             buffer = None
             found_codes = []
+            qcd = cv2.QRCodeDetector()
             while self.spout_running:
                 result = receiver.receiveImage(buffer, GL.GL_RGBA, False, 0)
 
@@ -56,10 +57,12 @@ class VRCSpoutBackend(VRCQRBackend):
                     img_data = np.array(buffer, np.uint8)
                     img_data = img_data.reshape((height, width, 4))
                     ocvImg = cv2.cvtColor(img_data, cv2.COLOR_RGBA2BGR)
-            
-                    qcd = cv2.QRCodeDetector()
-                    retval, decoded_info, points, straight_qrcode = qcd.detectAndDecodeMulti(ocvImg)
-                    
+                    retVal = False
+                    try:
+                        retval, decoded_info, points, straight_qrcode = qcd.detectAndDecodeMulti(ocvImg)
+                    except:
+                        print("Error decoding QR code")
+                        retval = False
                     # Iterate thought detected codes and fire the callback
                     if retval:
                         for info in decoded_info:
